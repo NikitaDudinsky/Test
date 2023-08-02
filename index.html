@@ -1,0 +1,30 @@
+<html>
+<head>
+ <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+ <script type="text/javascript">
+    var vid;
+
+    function init() {
+        vid = document.getElementById("myVideo");
+        vid.addEventListener("loadedmetadata", goFullscreen, false); 
+    }
+
+    function goFullscreen() {
+        vid.webkitEnterFullscreen();
+    }
+
+    $(document).ready(function(){
+        init();
+
+        $("#myVideo").bind('ended', function(){
+            $('#myVideo')[0].webkitExitFullScreen();
+        });
+    });
+ </script>
+</head>
+<body>
+    <h1>Fullscreen Video</h1>
+    <video src="movie.mp4" id="myVideo" autoplay controls >
+    </video>
+</body>
+</html>
